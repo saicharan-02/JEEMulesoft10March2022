@@ -1,5 +1,5 @@
 
-class Account {
+class Account1 {
 
   private int accno ;
   private String name;
@@ -27,10 +27,9 @@ class Account {
 
 }
 
-class Bank {
+class Bank1 {
 
   public static void main(String[] args) { 
-
  
     Account account1 = new Account();   
     account1.setAccount(101,"Krish",50000);
@@ -40,8 +39,7 @@ class Bank {
 
     Account account2 = new Account();
     account2.setAccount(102,"Raj",65000);
-    account2.displayAccount();
-   
+    account2.displayAccount(); 
 
    
   }
