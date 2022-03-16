@@ -31,13 +31,13 @@ class Bank1 {
 
   public static void main(String[] args) { 
  
-    Account account1 = new Account();   
+    Account1 account1 = new Account1();   
     account1.setAccount(101,"Krish",50000);
     account1.withdraw(5000);
     account1.displayAccount();
    
 
-    Account account2 = new Account();
+    Account1 account2 = new Account1();
     account2.setAccount(102,"Raj",65000);
     account2.displayAccount(); 
 
