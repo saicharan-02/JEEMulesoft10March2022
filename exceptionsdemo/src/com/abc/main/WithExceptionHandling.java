@@ -22,6 +22,8 @@ public class WithExceptionHandling {
 			System.out.println("Result: "+c);	
 		}
 		catch(InputMismatchException e) {
+			e.printStackTrace();
+			e.getMessage();
 			System.out.println("plz provide correct input type");
 		}		
 		catch(ArithmeticException e) {
