@@ -6,33 +6,9 @@ import java.util.Iterator;
 
 import com.abc.bean.Account;
 
-public class AccountListDemo {
+public class ComapatorArrayListDemo {
 
 	public static void main(String[] args) {
-		
-		System.out.println("******Courses List********");
-		
-		ArrayList<String> courses = new ArrayList<>();
-		courses.add("java");
-		courses.add("sql");
-		courses.add("c++");
-		courses.add("hibernate");
-		
-//		for(String c : courses) {
-//			System.out.println(c);
-//		}		
-		
-		Collections.sort(courses);
-		
-		Iterator<String> i1 = courses.iterator();
-		while(i1.hasNext()) {
-			String c = i1.next();
-			System.out.println(c);
-		}
-		
-		
-		
-		System.out.println("******Account List********");
 		
 		Account acc1 = new Account(111,"Raj", 50000);
 		Account acc2 = new Account(222,"Krish", 60000);
@@ -45,13 +21,18 @@ public class AccountListDemo {
 		accounts.add(acc2);
 		accounts.add(acc3);
 		
-	    Collections.sort(accounts);
+        NumberComparator numberComparator = new NumberComparator();
 		
+		NameComparator nameComparator = new NameComparator();
+		
+	    Collections.sort(accounts, nameComparator);
+	  		
 		Iterator<Account> i = accounts.iterator();
 		while(i.hasNext()) {
 			Account account = i.next();				
 			System.out.println(account.getAccno()+" "+account.getName()+" "+account.getBalance());
 		}
+
 
 	}
 

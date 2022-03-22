@@ -1,6 +1,6 @@
 package com.abc.bean;
 
-public class Account {
+public class Account implements Comparable<Account> {
 
 	private int accno;
 	private String name;
@@ -31,4 +31,12 @@ public class Account {
 		this.balance = balance;
 	}
 	
+	@Override
+	public int compareTo(Account o) {
+		int result = this.accno - o.accno;
+		System.out.println(result);
+		//int result = this.name.compareTo(o.getName());
+		return result;
+	}
+
 }
