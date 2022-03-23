@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.abc.service.Calculator;
@@ -57,6 +58,19 @@ public class CalculatorTest {
 		//Calculator cal = new Calculator();
 		int actualResult = cal.sum(10, -30);
 		assertEquals(-20,actualResult);
+	}
+	
+	@Test
+	public void testDivisonWithOutException() {
+		int actual = cal.div(20, 5);
+		assertEquals(4,actual);
+	}
+	
+	//@Ignore	
+	@Test(expected = ArithmeticException.class)
+	public void testDivisonWithException() {
+		int actual = cal.div(20, 0);
+	
 	}
 
 }
