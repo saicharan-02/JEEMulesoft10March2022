@@ -18,11 +18,11 @@ public class DBUtil {
 		try {
 			//step1 : load the driver and register with DriverManager 
 			Class.forName(DRIVERNAME);
-			System.out.println("Driver loadded");
+		
 			
 			//step2 : Establish the connection
 		    con = DriverManager.getConnection(URL, USERNAME, PASSWORD);   
-		    System.out.println("Connection established");	
+		   
 		}
 		catch(ClassNotFoundException e) {
 			e.printStackTrace();
