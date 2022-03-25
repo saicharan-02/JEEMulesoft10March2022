@@ -11,7 +11,6 @@ public class ListStreamDemo {
 	public static void main(String[] args) {
 		
 		
-	
 		List<String> courses = new ArrayList<>();
 		courses.add("Java");
 		courses.add("sql");
@@ -26,14 +25,13 @@ public class ListStreamDemo {
 		Integer[] nums = {10,25,36,28,15};		
 		Stream<Integer> numsStream = Arrays.stream(nums);
 		
-		numsStream.filter(x->x>25).forEach(x->System.out.print(x+ " "));
+		//numsStream.filter(x->x>25).forEach(x->System.out.print(x+ " "));
 		
-//		Optional<Integer> optional = numsStream.reduce((a,b)-> a+b);
-//		
-//		int sum = optional.get();
-//		
-//		System.out.println("Sum: "+sum);
+		Optional<Integer> optional = numsStream.reduce((a,b)-> a+b);
 		
+		int sum = optional.get();
+		
+		System.out.println("Sum: "+sum);
 		
 
 	}
