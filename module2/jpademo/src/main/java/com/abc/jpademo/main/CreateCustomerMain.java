@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.abc.jpademo.dao.CustomerDao;
 import com.abc.jpademo.entity.Customer;
 
 public class CreateCustomerMain {
@@ -19,19 +20,23 @@ public class CreateCustomerMain {
 		
 		//how to persist customer object
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
-		EntityManager em = emf.createEntityManager();
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
+//		EntityManager em = emf.createEntityManager();
+//		
+//		em.getTransaction().begin();
+//		
+//		em.persist(customer);
+//		
+//		em.getTransaction().commit();
+//		
+//		System.out.println("customer saved");		
+//		
+//		em.close();
+//		emf.close();
 		
-		em.getTransaction().begin();
+		CustomerDao customerDao = new CustomerDao();
+		customerDao.saveCustomer(customer);
 		
-		em.persist(customer);
-		
-		em.getTransaction().commit();
-		
-		System.out.println("customer saved");		
-		
-		em.close();
-		emf.close();
 		
 
 	}

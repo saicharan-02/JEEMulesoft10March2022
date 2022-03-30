@@ -2,10 +2,7 @@ package com.abc.jpademo.main;
 
 import java.time.LocalDate;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
+import com.abc.jpademo.dao.CustomerDao;
 import com.abc.jpademo.entity.Customer;
 
 public class UpdateCustomerMain {
@@ -14,31 +11,35 @@ public class UpdateCustomerMain {
 
 		Customer customer = new Customer();
 		customer.setCustomerId(4);
-		customer.setCustomerName("Rajkumar");
+		customer.setCustomerName("Rajkumarrrrr");
 		customer.setEmail("raj@tmail.com");
 		customer.setDob(LocalDate.of(1998, 10, 10));
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
-		EntityManager em = emf.createEntityManager();
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
+//		EntityManager em = emf.createEntityManager();
+//		
+//		Customer existingCustomer = em.find(Customer.class, customer.getCustomerId());
+//		
+//		if(existingCustomer!=null) {
+//			
+//			em.getTransaction().begin();
+//
+//			em.merge(customer);
+//
+//			em.getTransaction().commit();
+//
+//			System.out.println("customer updated");
+//		}
+//		else {
+//			System.out.println("customer not existing...");
+//		}	
+//
+//		em.close();
+//		emf.close();
 		
-		Customer existingCustomer = em.find(Customer.class, customer.getCustomerId());
+		CustomerDao customerDao = new CustomerDao();
+		customerDao.updateCustomer(customer);
 		
-		if(existingCustomer!=null) {
-			
-			em.getTransaction().begin();
-
-			em.merge(customer);
-
-			em.getTransaction().commit();
-
-			System.out.println("customer updated");
-		}
-		else {
-			System.out.println("customer not existing...");
-		}	
-
-		em.close();
-		emf.close();
 
 	}
 }
