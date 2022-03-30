@@ -7,8 +7,32 @@ import com.abc.bankapp.bean.Customer;
 import com.abc.bankapp.service.CustomerService;
 
 public class CustomerMain {
+	
+	public void getCustomerDetails() {
+		
+		Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {		
+		System.out.println("Enter Customer id: ");
+		int customerId = sc.nextInt();
+		
+		sc.close();
+		
+		CustomerService customerService = new CustomerService();
+		Customer customer = customerService.getCustomerDetails(customerId);
+		
+		if(customer!=null) {
+			System.out.println("Name: "+customer.getCustomerName());
+			System.out.println("Email: "+customer.getEmail());
+			System.out.println("Dob: "+customer.getDob());
+		}
+		else {
+			System.out.println("Customer not existing with id: "+customerId);
+		}
+		
+	}
+	
+	
+	public void saveCustomer() {
 		
 		Scanner sc = new Scanner(System.in);
 
@@ -36,7 +60,17 @@ public class CustomerMain {
 		CustomerService customerService = new CustomerService();
 		customerService.addCustomer(customer);
 		System.out.println("Customer Saved.");
+	}
+	
+
+	public static void main(String[] args) {		
 		
+		
+		CustomerMain customerMain = new CustomerMain();
+		
+		//customerMain.saveCustomer();
+		
+		customerMain.getCustomerDetails();
 		
 	}
 
