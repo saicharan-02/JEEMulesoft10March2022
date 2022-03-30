@@ -8,32 +8,37 @@ import javax.persistence.Persistence;
 
 import com.abc.jpademo.entity.Customer;
 
-public class CreateCustomerMain {
+public class UpdateCustomerMain {
 
 	public static void main(String[] args) {
-		
+
 		Customer customer = new Customer();
-		customer.setCustomerName("tillu");
-		customer.setEmail("tillu@tmail.com");
+		customer.setCustomerId(4);
+		customer.setCustomerName("Rajkumar");
+		customer.setEmail("raj@tmail.com");
 		customer.setDob(LocalDate.of(1998, 10, 10));
-		
-		//how to persist customer object
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
 		EntityManager em = emf.createEntityManager();
 		
-		em.getTransaction().begin();
+		Customer existingCustomer = em.find(Customer.class, customer.getCustomerId());
 		
-		em.persist(customer);
-		
-		em.getTransaction().commit();
-		
-		System.out.println("customer saved");		
-		
+		if(existingCustomer!=null) {
+			
+			em.getTransaction().begin();
+
+			em.merge(customer);
+
+			em.getTransaction().commit();
+
+			System.out.println("customer updated");
+		}
+		else {
+			System.out.println("customer not existing...");
+		}	
+
 		em.close();
 		emf.close();
-		
 
 	}
-
 }
