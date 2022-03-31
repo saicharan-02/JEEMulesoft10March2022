@@ -8,8 +8,7 @@ import com.abc.jpademo.entity.Customer;
 
 public class CustomerDetailsMain {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {		
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
 		EntityManager em = emf.createEntityManager();
@@ -28,13 +27,7 @@ public class CustomerDetailsMain {
 			System.out.println("Customer not existing in the database");
 		}
 		
-		//2. get customer by name
 		
-		Customer customer2 = em.find(Customer.class, "");
-		
-		
-		em.close();
-		emf.close();	
 	}
 
 }
