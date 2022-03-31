@@ -7,10 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="customer_tbl")
+@NamedQueries({
+@NamedQuery(name = "getAllCustomerQuery", query = "select c from Customer c"),
+@NamedQuery(name = "getCustomerByNameQuery", query = "select c from Customer c where c.customerName = :cname")
+
+})
+
 public class Customer {
 
 	@Id
