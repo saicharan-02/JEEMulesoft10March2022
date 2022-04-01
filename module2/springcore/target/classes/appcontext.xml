@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hello" class="com.abc.springcore.service.Welcome">  
+		<property name="message" value="spirng is great" />       
+	</bean>
+		
+	<bean id="circle" class="com.abc.springcore.beans.Circle">
+		<property name="radius" value="20"/>
+	</bean>
+	
+	<bean id="triangle" class="com.abc.springcore.beans.Triangle">
+		<property name="base" value="5"/>
+		<property name="height" value="10"/>
+	</bean>
+	
+	<bean id="shapeService" class = "com.abc.springcore.service.ShapeAreaService">
+		<property name="shape" ref="circle"></property>		
+	</bean>	
+
+</beans>
