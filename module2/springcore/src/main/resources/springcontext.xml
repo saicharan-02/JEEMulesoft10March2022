@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mailService" class="com.abc.springcore.service.EmailService">
+		<constructor-arg index="0" value="This is a sample text" />
+		<constructor-arg index="1" value="abc@tmail.com" />
+		<constructor-arg index="2" value="zyz@tamil.com" />
+	</bean>
+	
+	<bean id="addr1" class="com.abc.springcore.beans.Address">
+		<property name="doorNo" value="15-45/5"/>
+		<property name="city" value="pune"/>
+		<property name="pincode" value="123456"/>
+	</bean>
+	
+	<bean id="student1" class="com.abc.springcore.beans.Student">
+	 <property name="studentId" value="111"/>
+	 <property name="studentName" value="Sachin"/>
+	 <property name="courses"> 
+	 	<list>
+	 		<value>java</value>
+	  		<value>sql</value>
+	   		<value>hibernate</value>
+	    	<value>c++</value>
+	 	</list>	 
+	 </property>	
+	 <property name="address" ref="addr1"/>
+	</bean>
+	
+	<bean id="stuService" class="com.abc.springcore.service.StudentService">
+	    <constructor-arg index="0" ref="student1"/>		
+	</bean>
+
+</beans>
