@@ -1,15 +1,15 @@
 package com.abc.springannotationapp.main;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.abc.springannotationapp.bean.Account;
+import com.abc.springannotationapp.config.AppConfig;
 import com.abc.springannotationapp.controller.AccountController;
 
-public class AccountControllerMain {
+public class AccountControllerJavaConfigMain {
 
 	public static void main(String[] args) {
-		
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("appcontext.xml");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AccountController accountController = context.getBean(AccountController.class);
 		
 		Account account= new Account();
@@ -30,7 +30,7 @@ public class AccountControllerMain {
 		accountController.dispalyAllAccounts();
 		
 		context.close();
-
+		
+		
 	}
-
 }

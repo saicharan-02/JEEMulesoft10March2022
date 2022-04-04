@@ -5,18 +5,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context/spring-context.xsd">		
+	
 		
-	<bean id="accController" class="com.abc.springannotationapp.controller.AccountController">	
-		<property name="accountService" ref="accService"/>
-	</bean>	
+		<context:component-scan base-package="com.abc.springannotationapp"/>
 	
-	<bean id="accService" class="com.abc.springannotationapp.service.AccountService">	
-		<property name="accountDao" ref="accDao"/>
-	</bean>	
-	
-	<bean id="accDao" class="com.abc.springannotationapp.dao.AccountDao">			
-	</bean>	
-	
+
 		
 	</beans>
