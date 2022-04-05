@@ -23,9 +23,11 @@ public class ProductControllerMain {
 //		
 //		controller.addProduct(product);
 		
-		int productId = 1;
+//		int productId = 1;
+//		
+//		controller.searchProductById(productId);
 		
-		controller.searchProductById(productId);
+		controller.fetchAllProducts();
 		
 		context.close();
 

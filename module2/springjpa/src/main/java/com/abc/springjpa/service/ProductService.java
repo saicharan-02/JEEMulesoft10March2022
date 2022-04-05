@@ -16,39 +16,32 @@ public class ProductService {
 	@Autowired
 	private ProductDao productDao;
 
-//	public void setProductDao(ProductDao productDao) {
-//		this.productDao = productDao;
-//	}
-//	
 	@Transactional
-	public void saveProduct(Product product) {
+	public void saveProduct(Product product) {		
 		//any logics goes here
-		productDao.save(product);	
-		
+		productDao.save(product);		
 	}
 	
 	public Product fetchProductById(int productId) throws ProductNotFoundException {
 		Product product = productDao.getProductById(productId);
 		if(product == null) {
 			throw new ProductNotFoundException("Product not existing with id: "+productId);
-		}
-		
+		}		
 		return product;
 	}
 	
+	@Transactional
 	public void removeProduct(int productId) {		
 		Product product = productDao.getProductById(productId);
 		if(product == null) {
 			throw new ProductNotFoundException("Product not existing with id: "+productId);
 		}		
-		productDao.deleteProduct(product);		
-	}
+		productDao.deleteProduct(product);			
+	}	
 	
 	public List<Product> fetchAllProducts() {
-		List<Product> products = productDao.getAllProducts();
-		return products;
-	}
-	
-	
+		List<Product> products = productDao.getAllProducts();		
+		return products;		
+	}	
 	
 }
