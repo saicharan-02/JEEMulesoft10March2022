@@ -1,7 +1,10 @@
 package com.abc.springjpa.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,9 +23,16 @@ public class ProductDao {
 	
 	public Product getProductById(int productId) throws ProductNotFoundException {		
 		Product product = entityManager.find(Product.class, productId);		
-		if(product == null) {
-			throw new ProductNotFoundException("Product not existing with id: "+productId);
-		}		
 		return product;		
+	}
+	
+	public List<Product> getAllProducts() {		
+		TypedQuery<Product> query = entityManager.createNamedQuery("getAllProductsQuery", Product.class);
+		List<Product> products = query.getResultList();
+		return products;
+	}
+	
+	public void deleteProduct(Product product) {		
+		entityManager.remove(product);
 	}
 }
