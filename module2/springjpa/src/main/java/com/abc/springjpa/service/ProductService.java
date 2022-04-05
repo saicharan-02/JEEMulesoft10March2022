@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.abc.springjpa.dao.ProductDao;
 import com.abc.springjpa.entity.Product;
+import com.abc.springjpa.exception.ProductNotFoundException;
 
 @Service
 public class ProductService {
@@ -22,6 +23,11 @@ public class ProductService {
 		//any logics goes here
 		productDao.save(product);	
 		
+	}
+	
+	public Product fetchProductById(int productId) throws ProductNotFoundException {
+		Product product = productDao.getProductById(productId);
+		return product;
 	}
 	
 }

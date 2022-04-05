@@ -15,13 +15,17 @@ public class ProductControllerMain {
 		
 		ProductController controller = context.getBean(ProductController.class);
 		
-		Product product = new Product();
-		product.setProductName("IphoneX");
-		product.setProductPrice(580000);
-		product.setCreatedOn(LocalDate.of(2018, 10, 10));
-		product.setCategory("mobile");		
+//		Product product = new Product();
+//		product.setProductName("IphoneX");
+//		product.setProductPrice(580000);
+//		product.setCreatedOn(LocalDate.of(2018, 10, 10));
+//		product.setCategory("mobile");		
+//		
+//		controller.addProduct(product);
 		
-		controller.addProduct(product);
+		int productId = 1;
+		
+		controller.searchProductById(productId);
 		
 		context.close();
 
