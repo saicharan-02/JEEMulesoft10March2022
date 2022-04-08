@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order saveOrder(Order order) {
-		
+				
 		order.setOrderDate(LocalDate.now());
 	
 		List<OrderItem> orderItems = order.getOrderItems();
@@ -51,8 +51,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		order.setOrderAmount(orderTotalAmount);
 		
-		Order newOrder = orderRepository.save(order);
-		
+		Order newOrder = orderRepository.save(order);		
 		
 		return newOrder;
 	}

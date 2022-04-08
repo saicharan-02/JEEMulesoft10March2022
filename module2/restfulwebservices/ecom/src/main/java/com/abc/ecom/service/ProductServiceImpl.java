@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.abc.ecom.entity.Product;
-import com.abc.ecom.exception.ProductNotFoundException;
+import com.abc.ecom.exception.ResourceNotFoundException;
 import com.abc.ecom.repository.ProductRepository;
 
 @Service
@@ -33,12 +33,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product getProductById(int productId) throws ProductNotFoundException {
+	public Product getProductById(int productId) throws ResourceNotFoundException {
 		
 		Optional<Product> optionalProduct = productRepository.findById(productId);
 		
 		if(optionalProduct.isEmpty()) {
-			throw new ProductNotFoundException("Product not exising with id: "+productId);
+			throw new ResourceNotFoundException("Product not exising with id: "+productId);
 		}
 		
 		Product product = optionalProduct.get();
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
 		Optional<Product> optionalProduct = productRepository.findById(productId);
 		
 		if(optionalProduct.isEmpty()) {
-			throw new ProductNotFoundException("Product not exising with id: "+productId);
+			throw new ResourceNotFoundException("Product not exising with id: "+productId);
 		}
 		
 		Product product = optionalProduct.get();
@@ -67,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
 		Optional<Product> optionalProduct = productRepository.findById(product.getProductId());
 		
 		if(optionalProduct.isEmpty()) {
-			throw new ProductNotFoundException("Product not exising with id: "+product.getProductId());
+			throw new ResourceNotFoundException("Product not exising with id: "+product.getProductId());
 		}
 		
 		Product updatedProduct = productRepository.save(product);

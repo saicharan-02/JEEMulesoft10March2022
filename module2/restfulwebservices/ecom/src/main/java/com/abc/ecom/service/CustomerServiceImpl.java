@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.abc.ecom.entity.Customer;
-import com.abc.ecom.exception.CustomerNotFoundException;
+import com.abc.ecom.exception.ResourceNotFoundException;
 import com.abc.ecom.repository.CustomerRepository;
 
 @Service
@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer getCustomerById(int customerId) {
 		Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
 		if (optionalCustomer.isEmpty())
-			throw new CustomerNotFoundException("Customer Not found with id : " + customerId);
+			throw new ResourceNotFoundException("Customer Not found with id : " + customerId);
 		Customer customer = optionalCustomer.get();
 		return customer;
 	}
