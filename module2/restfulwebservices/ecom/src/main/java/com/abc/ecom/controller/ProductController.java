@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.ecom.entity.Product;
@@ -18,12 +19,13 @@ import com.abc.ecom.exception.ProductNotFoundException;
 import com.abc.ecom.service.ProductService;
 
 @RestController
+@RequestMapping("/product")
 public class ProductController {
 
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/products")
+	@GetMapping("/all")
 	public List<Product> fetchAllProducts() {
 		
 		List<Product> products = productService.getAllProducts();
@@ -31,7 +33,7 @@ public class ProductController {
 		return products;
 	}
 	
-	@PostMapping("/product")
+	@PostMapping("/save")
 	public ResponseEntity<Product> addProduct(@RequestBody Product product) {
 		
 		Product newProduct = productService.saveProduct(product);
@@ -41,7 +43,7 @@ public class ProductController {
 		return responseEntity;
 	}
 	
-	@GetMapping("/product/get/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<?> fetchProductById(@PathVariable("id") int productId) {
 		
 		ResponseEntity<?> responseEntity = null;
@@ -57,7 +59,7 @@ public class ProductController {
 		return responseEntity;
 	}
 	
-	@DeleteMapping("/product/delete/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteProductById(@PathVariable("id") int productId) {
 		
 		ResponseEntity<String> responseEntity = null;
@@ -73,7 +75,7 @@ public class ProductController {
 		return responseEntity;		
 	}
 	
-	@PutMapping("/product/update")
+	@PutMapping("/update")
 	public ResponseEntity<Object> updateProduct(@RequestBody Product product) {
 		
 		ResponseEntity<Object> responseEntity = null;
