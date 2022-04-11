@@ -19,14 +19,14 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getAllProducts() {
 		
-		List<Product> products = productRepository.findAll();
+		List<Product> products = productRepository.findAll();		
 		
 		return products;
 	}
 
 	@Override
 	public Product saveProduct(Product product) {
-	
+		
 		Product savedProduct = productRepository.save(product);
 		
 		return savedProduct;

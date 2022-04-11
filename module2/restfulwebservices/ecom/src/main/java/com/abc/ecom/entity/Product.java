@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name="product_tbl")
@@ -18,14 +20,18 @@ public class Product {
 	@Column(name="product_id")
 	private int productId;
 	
+	
+	@NotBlank(message = "Product Name should not blank")	
 	@Column(name="product_name")
 	private String productName;
 	
+	
+	@Positive(message = "Price should be positive")	
 	@Column(name="product_price")
 	private double productPrice;
 	
 	@Column(name="created_on")
-	private LocalDate createdOn;
+	private LocalDate createdOn;	
 	
 	@Column(name="category")
 	private String category;
