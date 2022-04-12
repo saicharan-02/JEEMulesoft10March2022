@@ -21,7 +21,6 @@ public class Customer {
 	@Column(name = "mobile")
 	private String mobile;
 
-	
 	public String getMobile() {
 		return mobile;
 	}

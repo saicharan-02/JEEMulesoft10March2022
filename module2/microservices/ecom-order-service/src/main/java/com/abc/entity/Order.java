@@ -31,8 +31,6 @@ public class Order {
 	@Column(name= "customer_id")
 	private int customerId;
 	
-
-	
 	@OneToMany(mappedBy = "order",cascade = CascadeType.PERSIST)
 	private List<OrderItem> orderItems = new ArrayList<>();
 
