@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.entity.Order;
 import com.abc.entity.OrderItem;
+import com.abc.model.OrderDetails;
 import com.abc.model.OrderProducts;
 import com.abc.model.OrderReqPayload;
 import com.abc.service.OrderService;
@@ -55,11 +57,12 @@ public class OrderServiceController {
 		
 	}
 	
-	@PutMapping("/update/{orderId}")
-	public ResponseEntity<?> placeOrder(@PathVariable("orderId") int orderId,@RequestBody OrderReqPayload reqPayload) {
+	@GetMapping("/get/{orderId}")
+	public ResponseEntity<OrderDetails> fetchOrderDetails(@PathVariable("orderId") int orderId) {
 		
-		return null;
+		OrderDetails order = orderService.getOrderById(orderId);
 		
+		return new ResponseEntity<>(order, HttpStatus.OK);		
 	}
 	
 }
