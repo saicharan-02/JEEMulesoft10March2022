@@ -9,8 +9,9 @@ public class OrderDetails {
 	private int orderId;
 	private LocalDate orderDate;
 	private double orderAmount;	
-	private List<OrderItemDetails> orderItems = new ArrayList<>();	
+	private List<OrderItemDetails> orderItems;	
 	private Customer customer;
+	
 	public int getOrderId() {
 		return orderId;
 	}
